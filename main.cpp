@@ -1,17 +1,34 @@
 #include <iostream>
+#include <ncurses.h>
+#define WORLD_WIDTH 50
+#define WORLD_HEIGHT 20
 
-int main() {
-//    std::string bee =  "\uD83D";
-    std::string bee1 = "\U0001F331";
-//    std::cout << bee << std::endl;
+int main(int argc, char *argv[]) {
 
-    for (int i = 0; i < 20; i++) {
-        for (int j = 0; j < 20; j++) {
-            std::cout << bee1;
+    WINDOW *snakeys_world;
+    int offsetx, offsety;
 
-        }
-        std::cout << std::endl;
-    }
+    initscr();
+    refresh();
+
+    offsetx = (COLS - WORLD_WIDTH) / 2;
+    offsety = (LINES - WORLD_HEIGHT) / 2;
+
+    snakeys_world = newwin(WORLD_HEIGHT,
+                           WORLD_WIDTH,
+                           offsety,
+                           offsetx);
+
+    box(snakeys_world, 0 , 0);
+
+    wrefresh(snakeys_world);
+
+    getch();
+
+    delwin(snakeys_world);
+
+    endwin();
+
     return 0;
-}
 
+}
