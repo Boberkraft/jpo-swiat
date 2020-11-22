@@ -8,14 +8,17 @@
 
 class Organizm {
 protected:
-    siła
-    inicjatywa
-    polozenie (x,y)
-    świat
+    int sila;
+    int inicjatywa;
+    int posX;
+    int posY;
+    Swiat *swiat;
 public:
-    virtual void akcja() = 0;
-    virtual void kolizja() = 0;
-    virtual void rysowanie() = 0;
+    virtual void akcja();
+
+    virtual void kolizja();
+
+    virtual void rysowanie();
 };
 
 

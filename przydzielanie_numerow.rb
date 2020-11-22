@@ -6,5 +6,5 @@ def licz(indeks)
   puts("ID1 = #{id1}, ID2 = #{id2}")
 
 end
-# licz(182619)
+licz(182619)
 # ID1 = 4, ID2 = 12
