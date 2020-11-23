@@ -9,8 +9,8 @@
 #include "../Roslina.h"
 
 class Mlecz : public Roslina {
-    akcja
-    Podejmuje trzy próby rozprzestrzeniania w jednej turze
+//    akcja
+//    Podejmuje trzy próby rozprzestrzeniania w jednej turze
 };
 
 

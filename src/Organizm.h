@@ -5,6 +5,10 @@
 #ifndef JPO_SWIAT_ORGANIZM_H
 #define JPO_SWIAT_ORGANIZM_H
 
+#include "Swiat.h"
+#include "Ekran.h"
+
+class Swiat;
 
 class Organizm {
 protected:
@@ -14,11 +18,15 @@ protected:
     int posY;
     Swiat *swiat;
 public:
+    Organizm();
+
     virtual void akcja();
 
     virtual void kolizja();
 
     virtual void rysowanie();
+
+    void zarejestrujSwiat(Swiat &swiat);
 };
 
 

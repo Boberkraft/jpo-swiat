@@ -8,10 +8,10 @@
 #include "../Organizm.h"
 
 class Roslina : public Organizm {
-    Wszystkie rośliny mają zerową inicjatywę.
-
-    symulacja rozprzestrzeniania się rośliny w metodzie akcja() → z pewnym prawdopodobieństwem każda z roślin może „zasiać”
-    nową roślinę tego samego gatunku na losowym, sąsiednim polu.
+//    Wszystkie rośliny mają zerową inicjatywę.
+//
+//    symulacja rozprzestrzeniania się rośliny w metodzie akcja() → z pewnym prawdopodobieństwem każda z roślin może „zasiać”
+//    nową roślinę tego samego gatunku na losowym, sąsiednim polu.
 };
 
 

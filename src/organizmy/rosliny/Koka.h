@@ -9,8 +9,8 @@
 #include "../Roslina.h"
 
 class Koka : public Roslina {
-    kolizja
-    Zwierze, które zjadło tę roślinę w następnej kolejce ma dodatkowy ruch.
+//    kolizja
+//    Zwierze, które zjadło tę roślinę w następnej kolejce ma dodatkowy ruch.
 };
 
 
