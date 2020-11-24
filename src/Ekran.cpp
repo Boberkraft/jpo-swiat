@@ -9,7 +9,7 @@
 Ekran::Ekran() {
     for (int rzad = 0; rzad < 20; rzad++) {
         for (int kolumna = 0; kolumna < 20; kolumna++) {
-            plansza[rzad][kolumna] = "\U00002800";
+            plansza[rzad][kolumna] = "  ";
         }
     };
 }
@@ -58,9 +58,12 @@ void Ekran::wyswietl() {
 
     const unsigned int RZAD_MAPY = 1;
     const unsigned int KOLUMNA_MAPY = 1;
+    const std::string colors [] = { "22", "23", "35", "58" , "28"};
     for (int rzad = 0; rzad < 20; rzad++) {
         for (int kolumna = 0; kolumna < 20; kolumna++) {
-            utfLinie[RZAD_MAPY + rzad][KOLUMNA_MAPY + kolumna] = plansza[rzad][kolumna];
+            int v1 = rand() % 5;
+            auto color = colors[v1];
+            utfLinie[RZAD_MAPY + rzad][KOLUMNA_MAPY + kolumna] = "\033[48;5;" + color + "m" + plansza[rzad][kolumna] + "\e[0m";
         }
     };
 
@@ -68,9 +71,12 @@ void Ekran::wyswietl() {
 }
 
 void Ekran::wyswietlBuffer(std::vector<std::vector<std::string>> linie) {
+
+
     for (auto linia : linie) {
         for (auto znak : linia) {
-            std::cout << "\e[0;39;102m" << znak << "\e[0m";
+//            std::cout << "\e[0;39;102m" << znak << "\e[0m";
+            std::cout <<  znak;
         }
     }
     std::cout.flush();
