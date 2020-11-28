@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <string>
+#include "Ekran/KolorowyZnak.h"
 
 class Ekran {
 private:
@@ -21,8 +22,7 @@ public:
     static Ekran *instancja();
 
 private:
-    void wyswietlBuffer(std::vector<std::vector<std::string>> linie);
+    void wyswietlBuffer(std::vector<std::vector<KolorowyZnak>> linie);
 };
-
 
 #endif //JPO_SWIAT_EKRAN_H

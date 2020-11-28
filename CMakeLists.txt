@@ -11,6 +11,8 @@ add_executable(
         src/Swiat.h
         src/Ekran.cpp
         src/Ekran.h
+        src/Ekran/KolorowyZnak.cpp
+        src/Ekran/KolorowyZnak.h
         src/Organizm.cpp
         src/Organizm.h
         src/organizmy/Zwierze.cpp
