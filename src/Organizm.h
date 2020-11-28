@@ -14,8 +14,9 @@ class Organizm {
 protected:
     int sila;
     int inicjatywa;
-    int posX;
-    int posY;
+    int kolumna;
+    int rzad;
+    std::string znak;
     Swiat *swiat;
 public:
     Organizm();

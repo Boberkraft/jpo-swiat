@@ -22,7 +22,11 @@ public:
     static Ekran *instancja();
 
 private:
-    void wyswietlBuffer(const std::vector<std::vector<KolorowyZnak>>& linie);
+    std::vector<std::vector<KolorowyZnak>> wezTemplatkeMapy();
+
+    std::vector<std::vector<KolorowyZnak>> wstawZnakiGracza(std::vector<std::vector<KolorowyZnak>>);
+
+    void wyswietlBuffer(const std::vector<std::vector<KolorowyZnak>> &linie);
 };
 
 #endif //JPO_SWIAT_EKRAN_H
