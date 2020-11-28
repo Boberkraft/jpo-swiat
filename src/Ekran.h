@@ -22,7 +22,7 @@ public:
     static Ekran *instancja();
 
 private:
-    void wyswietlBuffer(std::vector<std::vector<KolorowyZnak>> linie);
+    void wyswietlBuffer(const std::vector<std::vector<KolorowyZnak>>& linie);
 };
 
 #endif //JPO_SWIAT_EKRAN_H

@@ -8,14 +8,13 @@
 
 Ekran::Ekran() {
     for (auto & rzad : plansza) {
-        for (int kolumna = 0; kolumna < 20; kolumna++) {
-            rzad[kolumna] = "  ";
+        for (auto & kolumna : rzad) {
+            kolumna = "  ";
         }
     };
 }
 
 void Ekran::wstawZnak(std::string znak, int rzad, int kolumna) {
-    std::cout << "XD";
     plansza[rzad][kolumna] = znak;
 }
 
@@ -69,19 +68,19 @@ void Ekran::wyswietl() {
     wyswietlBuffer(kolorowaPlansza);
 }
 
-void Ekran::wyswietlBuffer(std::vector<std::vector<KolorowyZnak>> linie) {
+void Ekran::wyswietlBuffer(const std::vector<std::vector<KolorowyZnak>>& linie) {
 
 
-    for (auto linia : linie) {
+    for (const auto& linia : linie) {
         for (auto znak : linia) {
 //            std::cout << "\e[0;39;102m" << znak << "\e[0m";
             std::cout << znak.toString();
         }
     }
     std::cout.flush();
-    for (int rzad = 0; rzad < 20; rzad++) {
-        for (int kolumna = 0; kolumna < 20; kolumna++) {
-            plansza[rzad][kolumna] = "⠀";
+    for (auto & rzad : plansza) {
+        for (auto & kolumna : rzad) {
+            kolumna = "⠀";
         }
     };
 };
