@@ -3,8 +3,8 @@
 //
 
 #include "Swiat.h"
-
 #include "iostream"
+
 void Swiat::wykonajTure() {
     for (auto organizm : organizmy) {
         organizm->akcja();
@@ -20,7 +20,7 @@ void Swiat::rysujSwiat() {
 
 void Swiat::dodajOrganizm(Organizm *organizm) {
     organizmy.push_back(organizm);
-    organizm->zarejestrujSwiat(*this);
+    organizm->zarejestrujSwiat(this);
 }
 
 void Swiat::idz(Organizm &ruszajacySie, int rzad, int kolumna) {
@@ -59,9 +59,17 @@ int Swiat::korygatorWspolrzednej(int wspolrzedna) {
     }
 }
 
-Organizm *Swiat::rozmnorz(Organizm &pasywny, Organizm &inicjator) {
-    int rzad = pasywny.rzad;
-    int kolumna = pasywny.kolumna;
+Zwierze *Swiat::rozmnorz(Zwierze &pasywny, Zwierze &inicjator) {
+    rozmnorz(reinterpret_cast<Organizm &>(pasywny));
+}
+
+Roslina *Swiat::rozmnorz(Roslina &roslina) {
+    rozmnorz(reinterpret_cast<Organizm &>(roslina));
+}
+
+Organizm *Swiat::rozmnorz(Organizm &organizm) {
+    int rzad = organizm.rzad;
+    int kolumna = organizm.kolumna;
 
     int wolnyRzad, wolnaKolumna;
     bool znalezionoWolneMiejsce = znajdzWolneMiejsceObok(rzad, kolumna, wolnyRzad, wolnaKolumna);
@@ -70,9 +78,9 @@ Organizm *Swiat::rozmnorz(Organizm &pasywny, Organizm &inicjator) {
         return nullptr;
     }
 
-    auto dziecko = pasywny.dziecko();
+    auto dziecko = organizm.dziecko();
     dodajOrganizm(dziecko);
-    std::cout<<"Spawn{"<<wolnyRzad<<","<<wolnaKolumna<<"}"<<std::endl;
+    std::cout << "Spawn{" << wolnyRzad << "," << wolnaKolumna << "}" << std::endl;
 
     idz(*dziecko, wolnyRzad, wolnaKolumna);
 }

@@ -8,16 +8,15 @@
 #include <vector>
 #include "Ekran.h"
 #include "Organizm.h"
+#include "organizmy/Zwierze.h"
+#include "organizmy/Roslina.h"
 
-class Organizm;
 
 class Swiat {
 private:
     std::vector<Organizm *> organizmy;
 
     int korygatorWspolrzednej(int wspolrzedna);
-
-    bool znajdzWolneMiejsceObok(int rzad, int kolumna, int &wybranyRzad, int &wybranaKolumna);
 
 public:
     void wykonajTure();
@@ -32,7 +31,13 @@ public:
 
     Organizm *znajdz(int rzad, int kolumna);
 
-    Organizm *rozmnorz(Organizm &pasywny, Organizm &inicjator);
+    Zwierze *rozmnorz(Zwierze &pasywny, Zwierze &inicjator);
+
+    Roslina *rozmnorz(Roslina &roslina);
+
+    Organizm *rozmnorz(Organizm &organizm);
+
+    bool znajdzWolneMiejsceObok(int rzad, int kolumna, int &wybranyRzad, int &wybranaKolumna);
 
 };
 

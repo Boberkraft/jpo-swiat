@@ -9,11 +9,10 @@
 
 class Roslina : public Organizm {
 public:
-//    Roslina();
-//    Wszystkie rośliny mają zerową inicjatywę.
-//
-//    symulacja rozprzestrzeniania się rośliny w metodzie akcja() → z pewnym prawdopodobieństwem każda z roślin może „zasiać”
-//    nową roślinę tego samego gatunku na losowym, sąsiednim polu.
+    Roslina();
+
+    void akcja();
+    void kolizja(Organizm &wchodzacy);
 };
 
 

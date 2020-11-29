@@ -5,19 +5,8 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(
         jpo_swiat
-        src/main.cpp
-        src/Swiat.cpp
-        src/Swiat.h
-        src/Ekran.cpp
-        src/Ekran.h
         src/Ekran/KolorowyZnak.cpp
         src/Ekran/KolorowyZnak.h
-        src/Organizm.cpp
-        src/Organizm.h
-        src/organizmy/Zwierze.cpp
-        src/organizmy/Zwierze.h
-        src/organizmy/Roslina.cpp
-        src/organizmy/Roslina.h
         src/organizmy/zwierzeta/Wilk.cpp
         src/organizmy/zwierzeta/Wilk.h
         src/organizmy/zwierzeta/Owca.cpp
@@ -33,5 +22,17 @@ add_executable(
         src/organizmy/rosliny/Mlecz.cpp
         src/organizmy/rosliny/Mlecz.h
         src/organizmy/rosliny/Koka.cpp
-        src/organizmy/rosliny/Koka.h)
+        src/organizmy/rosliny/Koka.h
+        src/organizmy/Zwierze.cpp
+        src/organizmy/Zwierze.h
+        src/organizmy/Roslina.cpp
+        src/organizmy/Roslina.h
+        src/Organizm.cpp
+        src/Organizm.h
+        src/main.cpp
+        src/Swiat.cpp
+        src/Swiat.h
+        src/Ekran.cpp
+        src/Ekran.h
+)
 target_link_libraries(jpo_swiat)

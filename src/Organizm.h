@@ -5,8 +5,8 @@
 #ifndef JPO_SWIAT_ORGANIZM_H
 #define JPO_SWIAT_ORGANIZM_H
 
-#include "Swiat.h"
-#include "Ekran.h"
+#include <vector>
+#include <string>
 
 class Swiat;
 
@@ -20,8 +20,6 @@ public:
 
     Organizm();
 
-    static Organizm *stworz(int zwierzak);
-
     virtual Organizm *dziecko() = 0;
 
     virtual void akcja() = 0;
@@ -30,7 +28,7 @@ public:
 
     virtual void rysowanie();
 
-    void zarejestrujSwiat(Swiat &swiat);
+    void zarejestrujSwiat(Swiat *swiat);
 
     int rzad;
     int kolumna;

@@ -9,6 +9,9 @@
 #include "../Roslina.h"
 
 class Mlecz : public Roslina {
+public:
+    Mlecz();
+    Organizm* dziecko();
 //    akcja
 //    Podejmuje trzy próby rozprzestrzeniania w jednej turze
 };

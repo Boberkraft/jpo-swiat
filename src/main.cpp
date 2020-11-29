@@ -8,8 +8,9 @@
 #include "organizmy/zwierzeta/Zmija.h"
 #include "organizmy/zwierzeta/Leniwiec.h"
 #include "organizmy/zwierzeta/Zaba.h"
-
-#
+#include "organizmy/rosliny/Koka.h"
+#include "organizmy/rosliny/Mlecz.h"
+#include "organizmy/rosliny/Trawa.h"
 
 
 int main() {
@@ -25,7 +26,13 @@ int main() {
     dodaj(leniwiec2, Leniwiec, 15, 10);
     dodaj(zaba1, Zaba, 3, 9);
     dodaj(zaba2, Zaba, 3, 7);
-    for (int i = 0; i < 10; i++) {
+    dodaj(koka, Koka, 8, 8);
+    dodaj(mlecz, Mlecz, 10, 15);
+    dodaj(trawa1, Trawa, 10, 17);
+    dodaj(trawa2, Trawa, 10, 18);
+
+
+    for (int i = 0; i < 100; i++) {
         system("clear");
         swiat.rysujSwiat();
         sleep(1);

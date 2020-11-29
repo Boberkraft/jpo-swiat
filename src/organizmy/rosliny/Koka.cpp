@@ -3,3 +3,11 @@
 //
 
 #include "Koka.h"
+
+Koka::Koka() {
+    znak = "\U0001F336 ";
+}
+
+Organizm *Koka::dziecko() {
+    return new Koka();
+}
