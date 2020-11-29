@@ -113,9 +113,9 @@ bool Swiat::znajdzWolneMiejsceObok(int rzad, int kolumna, int &wybranyRzad, int 
 
         wybranyRzad = korygatorWspolrzednej(wybranyRzad);
         wybranaKolumna = korygatorWspolrzednej(wybranaKolumna);
-        Organizm *znaleziony = znajdz(wybranyRzad, wybranaKolumna);
+        Organizm *zajety = znajdz(wybranyRzad, wybranaKolumna);
 
-        if (znaleziony) {
+        if (zajety) {
             continue;
         } else {
             return true; // OK!
