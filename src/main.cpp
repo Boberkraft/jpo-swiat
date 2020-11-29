@@ -6,14 +6,18 @@
 
 int main() {
     Swiat swiat;
-    auto organizm = new Organizm();
-    swiat.dodajOrganizm(organizm);
-    swiat.idz(*organizm, 5, 5);
+    auto organizm1 = new Organizm();
+    auto organizm2 = new Organizm();
+    swiat.dodajOrganizm(organizm1);
+    swiat.dodajOrganizm(organizm2);
+    swiat.idz(*organizm1, 5, 5);
+    swiat.idz(*organizm2, 5, 6);
 
-    for (int i = 0; i < 10; i++) {
+    swiat.rozmnorz(*organizm1, *organizm2);
+    for (int i = 0; i < 100; i++) {
         system("clear");
         swiat.rysujSwiat();
-        sleep(1);
+        sleep(0.1);
         swiat.wykonajTure();
 
     }

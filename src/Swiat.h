@@ -17,7 +17,7 @@ private:
 
     int korygatorWspolrzednej(int wspolrzedna);
 
-    void znajdzWolneMiejsceObok(int rzad, int kolumna, int &wybranyRzad, int &wybranaKolumna);
+    bool znajdzWolneMiejsceObok(int rzad, int kolumna, int &wybranyRzad, int &wybranaKolumna);
 
 public:
     void wykonajTure();

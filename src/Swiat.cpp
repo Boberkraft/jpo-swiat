@@ -4,6 +4,7 @@
 
 #include "Swiat.h"
 
+#include "iostream"
 void Swiat::wykonajTure() {
     for (auto organizm : organizmy) {
         organizm->akcja();
@@ -63,27 +64,27 @@ Organizm *Swiat::rozmnorz(Organizm &pasywny, Organizm &inicjator) {
     int kolumna = pasywny.kolumna;
 
     int wolnyRzad, wolnaKolumna;
-    znajdzWolneMiejsceObok(rzad, kolumna, wolnyRzad, wolnaKolumna);
+    bool znalezionoWolneMiejsce = znajdzWolneMiejsceObok(rzad, kolumna, wolnyRzad, wolnaKolumna);
 
-    if (wolnyRzad == -1 && wolnaKolumna == -1) {
+    if (!znalezionoWolneMiejsce) {
         return nullptr;
     }
 
+    auto dziecko = new Organizm();
+    dodajOrganizm(dziecko);
+    std::cout<<"Spawn{"<<wolnyRzad<<","<<wolnaKolumna<<"}"<<std::endl;
 
+    idz(*dziecko, wolnyRzad, wolnaKolumna);
 }
 
-void Swiat::znajdzWolneMiejsceObok(int rzad, int kolumna, int &wybranyRzad, int &wybranaKolumna) {
-    int proby[4]{-1};
-    int iloscProb = -1;
-    int wylosowanyKierunek;
+bool Swiat::znajdzWolneMiejsceObok(int rzad, int kolumna, int &wybranyRzad, int &wybranaKolumna) {
+    int proby[4]{-2};
 
-    wybranyRzad = -1;
-    wybranaKolumna = -1;
+    for (int iloscProb = 0; iloscProb < 4; iloscProb++) {
+        wybranyRzad = -1;
+        wybranaKolumna = -1;
 
-    while (iloscProb < 4) {
-        iloscProb++;
-
-        wylosowanyKierunek = rand() % 4;
+        int wylosowanyKierunek = rand() % 4;
         for (int i = 0; i < iloscProb; i++) {
             if (wylosowanyKierunek == *proby) {
                 continue;
@@ -110,18 +111,23 @@ void Swiat::znajdzWolneMiejsceObok(int rzad, int kolumna, int &wybranyRzad, int 
                 break;
         }
 
+        wybranyRzad = korygatorWspolrzednej(wybranyRzad);
+        wybranaKolumna = korygatorWspolrzednej(wybranaKolumna);
         Organizm *znaleziony = znajdz(wybranyRzad, wybranaKolumna);
 
-        if (znaleziony == nullptr) {
-            return; // OK!
-        } else {
+        if (znaleziony) {
             continue;
+        } else {
+            return true; // OK!
         }
     }
+    return false;
 }
 
 void Swiat::zabij(Organizm &organizm) {
     auto it = std::find(organizmy.begin(), organizmy.end(), &organizm);
     organizmy.erase(it);
+    std::cout << "ZABIJAM!" << std::endl;
+    assert(1 == 2);
     delete &organizm;
 }
