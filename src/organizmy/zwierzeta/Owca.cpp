@@ -5,6 +5,8 @@
 #include "Owca.h"
 
 Owca::Owca() {
+    sila = 4;
+    inicjatywa = 4;
     znak = "\U0001F411";
 }
 

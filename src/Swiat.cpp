@@ -127,7 +127,5 @@ bool Swiat::znajdzWolneMiejsceObok(int rzad, int kolumna, int &wybranyRzad, int 
 void Swiat::zabij(Organizm &organizm) {
     auto it = std::find(organizmy.begin(), organizmy.end(), &organizm);
     organizmy.erase(it);
-    std::cout << "ZABIJAM!" << std::endl;
-    assert(1 == 2);
-    delete &organizm;
+//    assert(1 == 2);
 }

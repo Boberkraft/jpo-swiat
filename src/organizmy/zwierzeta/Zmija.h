@@ -8,7 +8,10 @@
 #include "../Zwierze.h"
 
 class Zmija : public Zwierze {
+public:
+    Zmija();
 
+    Organizm *dziecko();
 };
 
 

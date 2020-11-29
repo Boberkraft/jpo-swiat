@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.17)
 project(jpo_swiat)
 
 set(CMAKE_CXX_STANDARD 17)
-find_package(Curses REQUIRED)
 
 add_executable(
         jpo_swiat
@@ -35,4 +34,4 @@ add_executable(
         src/organizmy/rosliny/Mlecz.h
         src/organizmy/rosliny/Koka.cpp
         src/organizmy/rosliny/Koka.h)
-target_link_libraries(jpo_swiat ${CURSES_LIBRARIES})
+target_link_libraries(jpo_swiat)
