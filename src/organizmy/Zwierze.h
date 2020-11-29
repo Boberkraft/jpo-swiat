@@ -7,9 +7,16 @@
 
 #include "../Organizm.h"
 
-class Zwierze: public Organizm {
+class Zwierze : public Organizm {
 public:
     Zwierze();
+
+    Organizm *podobnaInstacja();
+
+    void akcja();
+
+    void kolizja(Organizm &wchodzacy);
+
 };
 
 

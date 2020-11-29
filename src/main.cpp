@@ -3,21 +3,22 @@
 
 #include "Swiat.h"
 #include "Ekran.h"
+#include "organizmy/Zwierze.h"
 
 int main() {
     Swiat swiat;
-    auto organizm1 = new Organizm();
-    auto organizm2 = new Organizm();
-    swiat.dodajOrganizm(organizm1);
-    swiat.dodajOrganizm(organizm2);
-    swiat.idz(*organizm1, 5, 5);
-    swiat.idz(*organizm2, 5, 6);
+    auto zwierze1 = new Zwierze();
+    auto zwierze2 = new Zwierze();
+    swiat.dodajOrganizm(zwierze1);
+    swiat.dodajOrganizm(zwierze2);
+    swiat.idz(*zwierze1, 5, 5);
+    swiat.idz(*zwierze2, 5, 6);
 
-    swiat.rozmnorz(*organizm1, *organizm2);
-    for (int i = 0; i < 100; i++) {
+    swiat.rozmnorz(*zwierze1, *zwierze2);
+    for (int i = 0; i < 10; i++) {
         system("clear");
         swiat.rysujSwiat();
-        sleep(0.1);
+        sleep(1);
         swiat.wykonajTure();
 
     }

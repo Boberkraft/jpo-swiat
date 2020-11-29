@@ -12,16 +12,17 @@ class Swiat;
 
 class Organizm {
 protected:
+    Swiat *swiat;
+public:
     int sila;
     int inicjatywa;
     std::string znak;
-    Swiat *swiat;
-public:
     Organizm();
 
-    virtual void akcja();
+    virtual Organizm* podobnaInstacja() = 0;
+    virtual void akcja() = 0;
 
-    virtual void kolizja(Organizm &wchodzacy);
+    virtual void kolizja(Organizm &wchodzacy) = 0;
 
     virtual void rysowanie();
 
