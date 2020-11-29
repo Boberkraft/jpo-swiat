@@ -9,6 +9,7 @@
 #include "iostream"
 
 Ekran::Ekran() {
+    templatka = wygenerujTemplatka();
     for (auto &rzad : plansza) {
         for (auto &kolumna : rzad) {
             kolumna = "  ";
@@ -17,14 +18,14 @@ Ekran::Ekran() {
 }
 
 void Ekran::wstawZnak(std::string znak, int rzad, int kolumna) {
-    plansza[rzad][kolumna] = std::move(znak);
+    plansza[rzad][kolumna] = znak;
 }
 
 void Ekran::wyswietl() {
-    wyswietlBuffer(wstawZnakiGracza(wezTemplatkeMapy()));
+    wyswietlBuffer(wstawZnakiGracza(templatka));
 }
 
-std::vector<std::vector<KolorowyZnak>> Ekran::wezTemplatkeMapy() {
+std::vector<std::vector<KolorowyZnak>> Ekran::wygenerujTemplatka() {
     std::vector<std::string> asciiPlansza;
 
     asciiPlansza.emplace_back("                                                                   \n");
@@ -60,11 +61,6 @@ std::vector<std::vector<KolorowyZnak>> Ekran::wezTemplatkeMapy() {
         kolorowaPlansza.emplace_back(kolorowaLinia);
     }
 
-
-    return kolorowaPlansza;
-}
-
-std::vector<std::vector<KolorowyZnak>> Ekran::wstawZnakiGracza(std::vector<std::vector<KolorowyZnak>> kolorowaPlansza) {
     const unsigned int RZAD_MAPY = 1;
     const unsigned int KOLUMNA_MAPY = 1;
     const std::string colors[] = {"22", "22", "22", "22", "58", "28"};
@@ -72,8 +68,20 @@ std::vector<std::vector<KolorowyZnak>> Ekran::wstawZnakiGracza(std::vector<std::
         for (int kolumna = 0; kolumna < 20; kolumna++) {
             int v1 = rand() % 6;
             auto color = colors[v1];
-            kolorowaPlansza[RZAD_MAPY + rzad][KOLUMNA_MAPY + kolumna].ustawZawartosc(plansza[rzad][kolumna]).ustawKolor(
-                    color);
+            kolorowaPlansza[RZAD_MAPY + rzad][KOLUMNA_MAPY + kolumna].ustawKolor(color);
+        }
+    };
+
+
+    return kolorowaPlansza;
+}
+
+std::vector<std::vector<KolorowyZnak>> Ekran::wstawZnakiGracza(std::vector<std::vector<KolorowyZnak>> kolorowaPlansza) {
+    const unsigned int RZAD_MAPY = 1;
+    const unsigned int KOLUMNA_MAPY = 1;
+    for (int rzad = 0; rzad < 20; rzad++) {
+        for (int kolumna = 0; kolumna < 20; kolumna++) {
+            kolorowaPlansza[RZAD_MAPY + rzad][KOLUMNA_MAPY + kolumna].ustawZawartosc(plansza[rzad][kolumna]);
         }
     };
 
@@ -89,7 +97,7 @@ void Ekran::wyswietlBuffer(const std::vector<std::vector<KolorowyZnak>> &linie) 
     std::cout.flush();
     for (auto &rzad : plansza) {
         for (auto &kolumna : rzad) {
-            kolumna = "⠀";
+            kolumna = "⠀ ";
         }
     };
 };

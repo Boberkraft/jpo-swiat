@@ -14,8 +14,6 @@ class Organizm {
 protected:
     int sila;
     int inicjatywa;
-    int kolumna;
-    int rzad;
     std::string znak;
     Swiat *swiat;
 public:
@@ -23,11 +21,14 @@ public:
 
     virtual void akcja();
 
-    virtual void kolizja();
+    virtual void kolizja(Organizm &wchodzacy);
 
     virtual void rysowanie();
 
     void zarejestrujSwiat(Swiat &swiat);
+
+    int rzad;
+    int kolumna;
 };
 
 

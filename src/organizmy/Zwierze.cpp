@@ -12,3 +12,16 @@
 //        nie dochodzi do walki, oba zwierzęta pozostają na swoich miejscach, koło nich pojawia się trzecie zwierze, tego samego gatunku.
 
 
+Zwierze::Zwierze() {
+    znak = "\U0001F343";
+//    znak = "\U0001F43E"; roslina
+
+}
+
+//void Zwierze::akcja() {
+//
+//}
+//
+//void Zwierze::kolizja() {
+//
+//}
