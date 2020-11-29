@@ -45,6 +45,3 @@ void Zwierze::kolizja(Organizm &wchodzacy) {
     }
 }
 
-Organizm *Zwierze::podobnaInstacja() {
-    return new Zwierze();
-}

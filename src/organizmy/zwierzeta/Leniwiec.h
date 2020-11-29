@@ -9,7 +9,6 @@
 #include "../Zwierze.h"
 
 class Leniwiec : public Zwierze {
-
 };
 
 

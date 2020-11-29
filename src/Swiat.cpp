@@ -70,7 +70,7 @@ Organizm *Swiat::rozmnorz(Organizm &pasywny, Organizm &inicjator) {
         return nullptr;
     }
 
-    auto dziecko = pasywny.podobnaInstacja();
+    auto dziecko = pasywny.dziecko();
     dodajOrganizm(dziecko);
     std::cout<<"Spawn{"<<wolnyRzad<<","<<wolnaKolumna<<"}"<<std::endl;
 

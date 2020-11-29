@@ -1,0 +1,8 @@
+//
+// Created by johnny on 29/11/2020.
+//
+
+#ifndef JPO_SWIAT_ORGANIZMYSTUFF_H
+#define JPO_SWIAT_ORGANIZMYSTUFF_H
+
+#endif //JPO_SWIAT_ORGANIZMYSTUFF_H

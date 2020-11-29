@@ -3,18 +3,21 @@
 
 #include "Swiat.h"
 #include "Ekran.h"
-#include "organizmy/Zwierze.h"
+#include "organizmy/zwierzeta/Wilk.h"
+#include "organizmy/zwierzeta/Owca.h"
 
 int main() {
     Swiat swiat;
-    auto zwierze1 = new Zwierze();
-    auto zwierze2 = new Zwierze();
-    swiat.dodajOrganizm(zwierze1);
-    swiat.dodajOrganizm(zwierze2);
-    swiat.idz(*zwierze1, 5, 5);
-    swiat.idz(*zwierze2, 5, 6);
-
-    swiat.rozmnorz(*zwierze1, *zwierze2);
+    auto wilk1 = new Wilk();
+    auto wilk2 = new Wilk();
+    auto owca1 = new Owca();
+    swiat.dodajOrganizm(wilk1);
+    swiat.dodajOrganizm(wilk2);
+    swiat.dodajOrganizm(owca1);
+    swiat.idz(*wilk1, 5, 5);
+    swiat.idz(*wilk2, 5, 6);
+    swiat.idz(*owca1, 3, 3);
+    swiat.rozmnorz(*wilk1, *wilk2);
     for (int i = 0; i < 10; i++) {
         system("clear");
         swiat.rysujSwiat();

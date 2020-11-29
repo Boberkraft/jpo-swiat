@@ -9,7 +9,9 @@
 #include "../Zwierze.h"
 
 class Owca : public Zwierze {
-
+public:
+    Owca();
+    Organizm* dziecko();
 };
 
 

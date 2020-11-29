@@ -17,9 +17,13 @@ public:
     int sila;
     int inicjatywa;
     std::string znak;
+
     Organizm();
 
-    virtual Organizm* podobnaInstacja() = 0;
+    static Organizm *stworz(int zwierzak);
+
+    virtual Organizm *dziecko() = 0;
+
     virtual void akcja() = 0;
 
     virtual void kolizja(Organizm &wchodzacy) = 0;
