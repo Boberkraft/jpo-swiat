@@ -12,6 +12,7 @@ public:
     Roslina();
 
     void akcja();
+
     void kolizja(Organizm &wchodzacy);
 };
 

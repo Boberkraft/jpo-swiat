@@ -12,6 +12,7 @@ class Zaba : public Zwierze {
 public:
     Zaba();
     Organizm* dziecko();
+    void akcja();
 };
 
 

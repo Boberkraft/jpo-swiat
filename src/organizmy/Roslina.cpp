@@ -11,11 +11,10 @@ Roslina::Roslina() {
     znak = "\U0001F343";
 }
 
-//    symulacja rozprzestrzeniania się rośliny w metodzie akcja() → z pewnym prawdopodobieństwem każda z roślin może „zasiać”
-//    nową roślinę tego samego gatunku na losowym, sąsiednim polu.
-
 void Roslina::akcja() {
-    swiat->rozmnorz(*this);
+    if (rand() % 100 < 20) {
+        swiat->rozmnorz(*this);
+    }
 }
 
 void Roslina::kolizja(Organizm &wchodzacy) {

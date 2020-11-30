@@ -32,6 +32,7 @@ void Swiat::rysujSwiat() {
 }
 
 void Swiat::dodajOrganizm(Organizm *organizm) {
+    std::cout << "Umieszczam w wektorze" << organizm << std::endl;
     organizmy.push_back(organizm);
     organizm->zarejestrujSwiat(this);
 }
@@ -47,8 +48,10 @@ void Swiat::idz(Organizm &ruszajacySie, int rzad, int kolumna) {
     }
 
     if (stojacy) {
+        std::cout << "BITKA " << &ruszajacySie << std::endl;
         stojacy->kolizja(ruszajacySie);
     } else {
+        std::cout << "Ide " << &ruszajacySie << std::endl;
         ruszajacySie.rzad = rzad;
         ruszajacySie.kolumna = kolumna;
     }
@@ -93,8 +96,6 @@ Organizm *Swiat::rozmnorz(Organizm &organizm) {
 
     Organizm *dziecko = organizm.dziecko();
     dodajOrganizm(dziecko);
-    std::cout << "Spawn{" << wolnyRzad << "," << wolnaKolumna << "}" << std::endl;
-
     idz(*dziecko, wolnyRzad, wolnaKolumna);
 }
 
