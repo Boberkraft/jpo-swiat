@@ -5,6 +5,7 @@
 #include "Organizm.h"
 
 Organizm::Organizm() {
+    zyje = false;
     sila = 0;
     inicjatywa = 0;
     kolumna = 0;
@@ -13,6 +14,7 @@ Organizm::Organizm() {
 }
 
 void Organizm::zarejestrujSwiat(Swiat *_swiat) {
+    zyje = true;
     swiat = _swiat;
 }
 

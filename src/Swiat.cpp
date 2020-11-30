@@ -6,9 +6,22 @@
 #include "iostream"
 
 void Swiat::wykonajTure() {
-    for (auto organizm : organizmy) {
-        organizm->akcja();
+    for (auto &organizm : organizmy) {
+        std::cout << "ruszam" << organizm << std::endl;
+        if (organizm->zyje) {
+            organizm->akcja();
+        }
     }
+    organizmy.erase(
+            std::remove_if(
+                    organizmy.begin(),
+                    organizmy.end(),
+                    [](Organizm* organizm) -> bool {
+                        return !organizm->zyje;
+                    }
+            ),
+            organizmy.end()
+    );
 }
 
 void Swiat::rysujSwiat() {
@@ -29,6 +42,10 @@ void Swiat::idz(Organizm &ruszajacySie, int rzad, int kolumna) {
 
     auto stojacy = znajdz(rzad, kolumna);
 
+    if (stojacy == &ruszajacySie) {
+        return; // LOL XD
+    }
+
     if (stojacy) {
         stojacy->kolizja(ruszajacySie);
     } else {
@@ -42,21 +59,17 @@ Organizm *Swiat::znajdz(int rzad, int kolumna) {
     kolumna = korygatorWspolrzednej(kolumna);
 
     for (auto organizm : organizmy) {
-        if (organizm->rzad == rzad && organizm->kolumna == kolumna) {
+        if (organizm->zyje && organizm->rzad == rzad && organizm->kolumna == kolumna) {
             return organizm;
         }
     }
     return nullptr;
 }
 
-int Swiat::korygatorWspolrzednej(int wspolrzedna) {
-    if (wspolrzedna >= 20) {
-        return 0;
-    } else if (wspolrzedna < 0) {
-        return 19;
-    } else {
-        return wspolrzedna;
-    }
+unsigned int Swiat::korygatorWspolrzednej(int wspolrzedna) {
+    int rem = wspolrzedna % 20;
+    rem = (rem >= 0) ? rem : rem + 20;
+    return rem;
 }
 
 Zwierze *Swiat::rozmnorz(Zwierze &pasywny, Zwierze &inicjator) {
@@ -78,7 +91,7 @@ Organizm *Swiat::rozmnorz(Organizm &organizm) {
         return nullptr;
     }
 
-    auto dziecko = organizm.dziecko();
+    Organizm *dziecko = organizm.dziecko();
     dodajOrganizm(dziecko);
     std::cout << "Spawn{" << wolnyRzad << "," << wolnaKolumna << "}" << std::endl;
 
@@ -133,7 +146,5 @@ bool Swiat::znajdzWolneMiejsceObok(int rzad, int kolumna, int &wybranyRzad, int 
 }
 
 void Swiat::zabij(Organizm &organizm) {
-    auto it = std::find(organizmy.begin(), organizmy.end(), &organizm);
-    organizmy.erase(it);
-//    assert(1 == 2);
+    organizm.zyje = false;
 }

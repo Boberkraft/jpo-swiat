@@ -11,7 +11,7 @@ class Zwierze : public Organizm {
 public:
     Zwierze();
 
-    void akcja() final;
+    void akcja() ;
 
     void kolizja(Organizm &wchodzacy);
 

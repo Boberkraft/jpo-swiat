@@ -16,7 +16,7 @@ class Swiat {
 private:
     std::vector<Organizm *> organizmy;
 
-    int korygatorWspolrzednej(int wspolrzedna);
+    unsigned int korygatorWspolrzednej(int wspolrzedna);
 
 public:
     void wykonajTure();

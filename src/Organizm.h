@@ -14,6 +14,7 @@ class Organizm {
 protected:
     Swiat *swiat;
 public:
+    bool zyje;
     int sila;
     int inicjatywa;
     std::string znak;

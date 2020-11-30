@@ -10,20 +10,16 @@ Zwierze::Zwierze() {
 }
 
 void Zwierze::akcja() {
-    switch (rand() % 4) {
-        case 0:
-            swiat->idz(*this, rzad + 1, kolumna);
-            break;
-        case 1:
-            swiat->idz(*this, rzad - 1, kolumna);
-            break;
-        case 2:
-            swiat->idz(*this, rzad, kolumna + 1);
-            break;
-        case 3:
-            swiat->idz(*this, rzad, kolumna - 1);
-            break;
+    int deltaRzad = 0;
+    int deltaKolumna = 0;
+
+    while (deltaRzad == 0 && deltaKolumna == 0) {
+        deltaRzad = (rand() % 2) - 1;
+        deltaKolumna = (rand() % 2) - 1;
     }
+    swiat->idz(*this,
+               rzad + deltaRzad,
+               kolumna + deltaKolumna);
 }
 
 
