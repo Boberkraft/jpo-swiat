@@ -12,13 +12,16 @@
 #include "organizmy/rosliny/Mlecz.h"
 #include "organizmy/rosliny/Trawa.h"
 
+#define dodaj(nazwa_zmiennaj, KLASA, rzad, kolumna) \
+        Organizm * nazwa_zmiennaj = new KLASA();    \
+        swiat.dodajOrganizm(nazwa_zmiennaj);        \
+        swiat.idz(*nazwa_zmiennaj, rzad, kolumna);
 
 int main() {
     Swiat swiat;
-#define dodaj(nazwa_zmiennaj, KLASA, rzad, kolumna) Organizm * nazwa_zmiennaj = new KLASA(); swiat.dodajOrganizm(nazwa_zmiennaj);swiat.idz(*nazwa_zmiennaj, rzad, kolumna);
+
     dodaj(wilk1, Wilk, 14, 1);
     dodaj(wilk2, Wilk, 13, 1);
-
     dodaj(owca1, Owca, 3, 3);
     dodaj(zmija1, Zmija, 7, 7);
     dodaj(zmija2, Zmija, 10, 10);
