@@ -76,20 +76,18 @@ unsigned int Swiat::korygatorWspolrzednej(int wspolrzedna) {
 }
 
 Zwierze *Swiat::rozmnorz(Zwierze &pasywny, Zwierze &inicjator) {
-    rozmnorz(reinterpret_cast<Organizm &>(pasywny));
+    rozmnorz(reinterpret_cast<Organizm &>(pasywny), 2);
 }
 
 Roslina *Swiat::rozmnorz(Roslina &roslina) {
-    rozmnorz(reinterpret_cast<Organizm &>(roslina));
+    rozmnorz(reinterpret_cast<Organizm &>(roslina), 2);
 }
 
-Organizm *Swiat::rozmnorz(Organizm &organizm) {
-    int rzad = organizm.rzad;
-    int kolumna = organizm.kolumna;
-
+Organizm *Swiat::rozmnorz(Organizm &organizm, unsigned int zasieg) {
     int wolnyRzad, wolnaKolumna;
-    bool znalezionoWolneMiejsce = znajdzWolneMiejsceObok(rzad, kolumna, wolnyRzad, wolnaKolumna);
-
+    bool znalezionoWolneMiejsce = znajdzWolneMiejsceObok(zasieg,
+                                                         organizm.rzad, organizm.kolumna,
+                                                         wolnyRzad, wolnaKolumna);
     if (!znalezionoWolneMiejsce) {
         return nullptr;
     }
@@ -99,14 +97,14 @@ Organizm *Swiat::rozmnorz(Organizm &organizm) {
     idz(*dziecko, wolnyRzad, wolnaKolumna);
 }
 
-bool Swiat::znajdzWolneMiejsceObok(int rzad, int kolumna, int &wybranyRzad, int &wybranaKolumna) {
-    int proby[4]{-2};
+bool Swiat::znajdzWolneMiejsceObok(unsigned int zasieg, int rzad, int kolumna, int &wybranyRzad, int &wybranaKolumna) {
+    int proby[100]{-2};
 
-    for (int iloscProb = 0; iloscProb < 4; iloscProb++) {
+    for (int iloscProb = 0; iloscProb < zasieg; iloscProb++) {
         wybranyRzad = -1;
         wybranaKolumna = -1;
 
-        int wylosowanyKierunek = rand() % 4;
+        int wylosowanyKierunek = rand() % ((zasieg*2 + 1) * (zasieg*2 + 1));
         for (int i = 0; i < iloscProb; i++) {
             if (wylosowanyKierunek == *proby) {
                 continue;
@@ -114,24 +112,12 @@ bool Swiat::znajdzWolneMiejsceObok(int rzad, int kolumna, int &wybranyRzad, int 
         }
         proby[iloscProb] = wylosowanyKierunek;
 
-        switch (wylosowanyKierunek) {
-            case 0:
-                wybranyRzad = rzad - 1;
-                wybranaKolumna = kolumna;
-                break;
-            case 1:
-                wybranyRzad = rzad + 1;
-                wybranaKolumna = kolumna;
-                break;
-            case 2:
-                wybranyRzad = rzad;
-                wybranaKolumna = kolumna - 1;
-                break;
-            case 3:
-                wybranyRzad = rzad;
-                wybranaKolumna = kolumna + 1;
-                break;
-        }
+        int x =  (wylosowanyKierunek / ((zasieg + 1) * 2) - zasieg/2);
+        int y =  (wylosowanyKierunek % ((zasieg + 1) * 2) - zasieg/2);
+        wybranyRzad = rzad + x;
+        wybranaKolumna = kolumna + y;
+
+        std::cout << "[" <<  x << "," << y << "]" << std::endl;
 
         wybranyRzad = korygatorWspolrzednej(wybranyRzad);
         wybranaKolumna = korygatorWspolrzednej(wybranaKolumna);

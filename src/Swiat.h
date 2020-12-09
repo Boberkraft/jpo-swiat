@@ -18,6 +18,8 @@ private:
 
     unsigned int korygatorWspolrzednej(int wspolrzedna);
 
+    Organizm *rozmnorz(Organizm &organizm, unsigned int zasieg);
+
 public:
     void wykonajTure();
 
@@ -35,9 +37,8 @@ public:
 
     Roslina *rozmnorz(Roslina &roslina);
 
-    Organizm *rozmnorz(Organizm &organizm);
 
-    bool znajdzWolneMiejsceObok(int rzad, int kolumna, int &wybranyRzad, int &wybranaKolumna);
+    bool znajdzWolneMiejsceObok(unsigned int zasieg, int rzad, int kolumna, int &wybranyRzad, int &wybranaKolumna);
 
 };
 

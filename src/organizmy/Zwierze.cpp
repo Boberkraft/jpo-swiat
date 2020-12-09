@@ -14,8 +14,8 @@ void Zwierze::akcja() {
     int deltaKolumna = 0;
 
     while (deltaRzad == 0 && deltaKolumna == 0) {
-        deltaRzad = (rand() % 2) - 1;
-        deltaKolumna = (rand() % 2) - 1;
+        deltaRzad = (rand() % 3) - 1;
+        deltaKolumna = (rand() % 3) - 1;
     }
     swiat->idz(*this,
                rzad + deltaRzad,
