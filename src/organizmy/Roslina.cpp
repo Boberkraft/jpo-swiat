@@ -17,9 +17,12 @@ void Roslina::akcja() {
     }
 }
 
+//void Roslina::rozmnorz() {
+//    int wolnyRzad, wolnaKolumna;
+//    swiat->znajdzWolneMiejsceObok();
+//
+//}
 void Roslina::kolizja(Organizm &wchodzacy) {
-    auto rzadZabitego = rzad;
-    auto kolumnaZabitego = kolumna;
     swiat->zabij(*this);
-    swiat->idz(wchodzacy, rzadZabitego, kolumnaZabitego);
+    swiat->idz(wchodzacy, pozycja);
 }

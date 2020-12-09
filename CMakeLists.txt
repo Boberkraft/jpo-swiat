@@ -5,6 +5,8 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(
         jpo_swiat
+        src/Pozycja.cpp
+        src/Pozycja.h
         src/Ekran/KolorowyZnak.cpp
         src/Ekran/KolorowyZnak.h
         src/organizmy/zwierzeta/Wilk.cpp

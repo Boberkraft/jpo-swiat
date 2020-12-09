@@ -7,7 +7,7 @@
 
 void Swiat::wykonajTure() {
     for (auto &organizm : organizmy) {
-        std::cout << "ruszam" << organizm << std::endl;
+//        std::cout << "ruszam" << organizm << std::endl;
         if (organizm->zyje) {
             organizm->akcja();
         }
@@ -16,7 +16,7 @@ void Swiat::wykonajTure() {
             std::remove_if(
                     organizmy.begin(),
                     organizmy.end(),
-                    [](Organizm* organizm) -> bool {
+                    [](Organizm *organizm) -> bool {
                         return !organizm->zyje;
                     }
             ),
@@ -32,37 +32,30 @@ void Swiat::rysujSwiat() {
 }
 
 void Swiat::dodajOrganizm(Organizm *organizm) {
-    std::cout << "Umieszczam w wektorze" << organizm << std::endl;
+//    std::cout << "Umieszczam w wektorze" << organizm << std::endl;
     organizmy.push_back(organizm);
     organizm->zarejestrujSwiat(this);
 }
 
-void Swiat::idz(Organizm &ruszajacySie, int rzad, int kolumna) {
-    rzad = korygatorWspolrzednej(rzad);
-    kolumna = korygatorWspolrzednej(kolumna);
-
-    auto stojacy = znajdz(rzad, kolumna);
+void Swiat::idz(Organizm &ruszajacySie, Pozycja pozycja) {
+    auto stojacy = znajdz(pozycja);
 
     if (stojacy == &ruszajacySie) {
         return; // LOL XD
     }
 
     if (stojacy) {
-        std::cout << "BITKA " << &ruszajacySie << std::endl;
+//        std::cout << "BITKA " << &ruszajacySie << std::endl;
         stojacy->kolizja(ruszajacySie);
     } else {
-        std::cout << "Ide " << &ruszajacySie << std::endl;
-        ruszajacySie.rzad = rzad;
-        ruszajacySie.kolumna = kolumna;
+        ruszajacySie.pozycja = pozycja;
     }
 }
 
-Organizm *Swiat::znajdz(int rzad, int kolumna) {
-    rzad = korygatorWspolrzednej(rzad);
-    kolumna = korygatorWspolrzednej(kolumna);
+Organizm *Swiat::znajdz(Pozycja pozycja) {
 
     for (auto organizm : organizmy) {
-        if (organizm->zyje && organizm->rzad == rzad && organizm->kolumna == kolumna) {
+        if (organizm->zyje && organizm->pozycja == pozycja) {
             return organizm;
         }
     }
@@ -70,9 +63,7 @@ Organizm *Swiat::znajdz(int rzad, int kolumna) {
 }
 
 unsigned int Swiat::korygatorWspolrzednej(int wspolrzedna) {
-    int rem = wspolrzedna % 20;
-    rem = (rem >= 0) ? rem : rem + 20;
-    return rem;
+
 }
 
 Zwierze *Swiat::rozmnorz(Zwierze &pasywny, Zwierze &inicjator) {
@@ -84,22 +75,23 @@ Roslina *Swiat::rozmnorz(Roslina &roslina) {
 }
 
 Organizm *Swiat::rozmnorz(Organizm &organizm, unsigned int zasieg) {
-    int wolnyRzad, wolnaKolumna;
+    Pozycja wolnaPozycja;
     bool znalezionoWolneMiejsce = znajdzWolneMiejsceObok(zasieg,
-                                                         organizm.rzad, organizm.kolumna,
-                                                         wolnyRzad, wolnaKolumna);
+                                                         organizm.pozycja,
+                                                         wolnaPozycja);
     if (!znalezionoWolneMiejsce) {
         return nullptr;
     }
 
     Organizm *dziecko = organizm.dziecko();
     dodajOrganizm(dziecko);
-    idz(*dziecko, wolnyRzad, wolnaKolumna);
+    idz(*dziecko, wolnaPozycja);
 }
 
-bool Swiat::znajdzWolneMiejsceObok(unsigned int zasieg, int rzad, int kolumna, int &wybranyRzad, int &wybranaKolumna) {
+bool Swiat::znajdzWolneMiejsceObok(unsigned int zasieg, Pozycja pozycja, Pozycja &wybranaPozycja) {
     int proby[100]{-2};
 
+    int wybranyRzad, wybranaKolumna;
     for (int iloscProb = 0; iloscProb < zasieg; iloscProb++) {
         wybranyRzad = -1;
         wybranaKolumna = -1;
@@ -114,14 +106,9 @@ bool Swiat::znajdzWolneMiejsceObok(unsigned int zasieg, int rzad, int kolumna, i
 
         int x =  (wylosowanyKierunek / ((zasieg + 1) * 2) - zasieg/2);
         int y =  (wylosowanyKierunek % ((zasieg + 1) * 2) - zasieg/2);
-        wybranyRzad = rzad + x;
-        wybranaKolumna = kolumna + y;
+        wybranaPozycja = Pozycja(pozycja.rzad() + x, pozycja.kolumna() + y);
 
-        std::cout << "[" <<  x << "," << y << "]" << std::endl;
-
-        wybranyRzad = korygatorWspolrzednej(wybranyRzad);
-        wybranaKolumna = korygatorWspolrzednej(wybranaKolumna);
-        Organizm *zajety = znajdz(wybranyRzad, wybranaKolumna);
+        Organizm *zajety = znajdz(wybranaPozycja);
 
         if (zajety) {
             continue;

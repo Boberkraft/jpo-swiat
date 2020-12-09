@@ -27,18 +27,17 @@ public:
 
     void dodajOrganizm(Organizm *organizm);
 
-    void idz(Organizm &organizm, int rzad, int kolumna);
+    void idz(Organizm &organizm, Pozycja pozycja);
 
     void zabij(Organizm &organizm);
 
-    Organizm *znajdz(int rzad, int kolumna);
+    Organizm *znajdz(Pozycja pozycja);
 
     Zwierze *rozmnorz(Zwierze &pasywny, Zwierze &inicjator);
 
     Roslina *rozmnorz(Roslina &roslina);
 
-
-    bool znajdzWolneMiejsceObok(unsigned int zasieg, int rzad, int kolumna, int &wybranyRzad, int &wybranaKolumna);
+    bool znajdzWolneMiejsceObok(unsigned int zasieg, Pozycja pozycja, Pozycja &wybranaPozycja);
 
 };
 

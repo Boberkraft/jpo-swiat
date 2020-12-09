@@ -10,16 +10,7 @@ Zwierze::Zwierze() {
 }
 
 void Zwierze::akcja() {
-    int deltaRzad = 0;
-    int deltaKolumna = 0;
-
-    while (deltaRzad == 0 && deltaKolumna == 0) {
-        deltaRzad = (rand() % 3) - 1;
-        deltaKolumna = (rand() % 3) - 1;
-    }
-    swiat->idz(*this,
-               rzad + deltaRzad,
-               kolumna + deltaKolumna);
+    swiat->idz(*this, *pozycja.obok(1));
 }
 
 
@@ -31,10 +22,8 @@ void Zwierze::kolizja(Zwierze &wchodzacy) {
     if (znak == wchodzacy.znak) {
         swiat->rozmnorz(*this, wchodzacy);
     } else {
-        int rzadZabitego = rzad;
-        int kolumnaZabitego = kolumna;
         swiat->zabij(*this);
-        swiat->idz(wchodzacy, rzadZabitego, kolumnaZabitego);
+        swiat->idz(wchodzacy, pozycja);
     }
 }
 

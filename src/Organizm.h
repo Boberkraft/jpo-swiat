@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <string>
+#include "Pozycja.h"
 
 class Swiat;
 
@@ -31,8 +32,7 @@ public:
 
     void zarejestrujSwiat(Swiat *swiat);
 
-    int rzad;
-    int kolumna;
+    Pozycja pozycja;
 };
 
 

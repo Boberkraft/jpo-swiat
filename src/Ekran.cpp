@@ -17,8 +17,8 @@ Ekran::Ekran() {
     };
 }
 
-void Ekran::wstawZnak(std::string znak, int rzad, int kolumna) {
-    plansza[rzad][kolumna] = znak;
+void Ekran::wstawZnak(std::string znak, Pozycja pozycja) {
+    plansza[pozycja.rzad()][pozycja.kolumna()] = znak;
 }
 
 void Ekran::wyswietl() {

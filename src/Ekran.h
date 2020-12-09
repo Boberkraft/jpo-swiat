@@ -8,6 +8,7 @@
 #include <vector>
 #include <string>
 #include "Ekran/KolorowyZnak.h"
+#include "Pozycja.h"
 
 class Ekran {
 private:
@@ -17,7 +18,7 @@ private:
 public:
     Ekran();
 
-    void wstawZnak(std::string znak, int rzad, int kolumna);
+    void wstawZnak(std::string znak, Pozycja pozycja);
 
     void wyswietl();
 

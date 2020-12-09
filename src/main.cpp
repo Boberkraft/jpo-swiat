@@ -15,7 +15,7 @@
 #define dodaj(nazwa_zmiennaj, KLASA, rzad, kolumna) \
         Organizm * nazwa_zmiennaj = new KLASA();    \
         swiat.dodajOrganizm(nazwa_zmiennaj);        \
-        swiat.idz(*nazwa_zmiennaj, rzad, kolumna);
+        swiat.idz(*nazwa_zmiennaj, Pozycja(rzad, kolumna));
 
 int main() {
     Swiat swiat;
@@ -35,10 +35,10 @@ int main() {
     dodaj(trawa2, Trawa, 10, 18);
 
 
-    for (int i = 0; i < 100; i++) {
+    for (int i = 0; i < 100000; i++) {
         system("clear");
         swiat.rysujSwiat();
-        sleep(1);
+//        sleep(1);
         swiat.wykonajTure();
 
     }
