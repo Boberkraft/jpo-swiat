@@ -8,6 +8,8 @@
 #include "../Organizm.h"
 
 class Zwierze : public Organizm {
+private:
+    bool podwojnyRuch;
 public:
     Zwierze();
 
@@ -17,6 +19,7 @@ public:
 
     void kolizja(Zwierze &wchodzacy);
 
+    void dajBuffaPodwojnegoRuchu();
 };
 
 

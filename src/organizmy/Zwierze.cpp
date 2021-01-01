@@ -7,10 +7,15 @@
 
 Zwierze::Zwierze() {
     znak = "\U0001F43E";
+    podwojnyRuch = false;
 }
 
 void Zwierze::akcja() {
     swiat->idz(*this, *pozycja.obok(1));
+    if (podwojnyRuch) {
+        podwojnyRuch = false;
+        akcja();
+    }
 }
 
 
@@ -25,5 +30,9 @@ void Zwierze::kolizja(Zwierze &wchodzacy) {
         swiat->zabij(*this);
         swiat->idz(wchodzacy, pozycja);
     }
+}
+
+void Zwierze::dajBuffaPodwojnegoRuchu() {
+    podwojnyRuch = true;
 }
 

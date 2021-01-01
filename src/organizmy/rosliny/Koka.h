@@ -12,8 +12,7 @@ class Koka : public Roslina {
 public:
     Koka();
     Organizm* dziecko();
-//    kolizja
-//    Zwierze, które zjadło tę roślinę w następnej kolejce ma dodatkowy ruch.
+    void kolizja(Organizm &wchodzacy);
 };
 
 

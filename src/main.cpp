@@ -20,25 +20,27 @@
 int main() {
     Swiat swiat;
 
-    dodaj(wilk1, Wilk, 14, 1);
-    dodaj(wilk2, Wilk, 13, 1);
-    dodaj(owca1, Owca, 3, 3);
-    dodaj(zmija1, Zmija, 7, 7);
-    dodaj(zmija2, Zmija, 10, 10);
-    dodaj(leniwiec1, Leniwiec, 16, 10);
-    dodaj(leniwiec2, Leniwiec, 15, 10);
-    dodaj(zaba1, Zaba, 3, 9);
-    dodaj(zaba2, Zaba, 3, 7);
-    dodaj(koka, Koka, 8, 8);
-    dodaj(mlecz, Mlecz, 10, 15);
-    dodaj(trawa1, Trawa, 10, 17);
-    dodaj(trawa2, Trawa, 10, 18);
+//    dodaj(wilk1, Wilk, 14, 1);
+//    dodaj(wilk2, Wilk, 13, 1);
+//    dodaj(owca1, Owca, 3, 3);
+//    dodaj(zmija1, Zmija, 7, 7);
+//    dodaj(zmija2, Zmija, 10, 10);
+//    dodaj(leniwiec1, Leniwiec, 16, 10);
+//    dodaj(leniwiec2, Leniwiec, 15, 10);
+//    dodaj(zaba1, Zaba, 3, 9);
+//    dodaj(zaba2, Zaba, 3, 7);
+//    dodaj(koka, Koka, 8, 8);
+//    dodaj(mlecz, Mlecz, 10, 15);
+//    dodaj(trawa1, Trawa, 10, 17);
+//    dodaj(trawa2, Trawa, 10, 18);
 
+    dodaj(wilk1, Wilk, 8, 9);
+    dodaj(koka, Koka, 8, 8);
 
     for (int i = 0; i < 100000; i++) {
         system("clear");
         swiat.rysujSwiat();
-//        sleep(1);
+        sleep(1);
         swiat.wykonajTure();
 
     }
