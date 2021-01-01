@@ -10,7 +10,10 @@ Swiat::Swiat() {
 };
 
 void Swiat::wykonajTure() {
-    for (auto &organizm : organizmy) {
+    auto size = organizmy.size();
+    for (int i = 0; i < size; i++) {
+        auto organizm = organizmy[i];
+
 //        std::cout << "ruszam" << organizm << std::endl;
         if (organizm->zyje) {
             organizm->akcja();

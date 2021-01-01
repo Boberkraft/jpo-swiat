@@ -40,9 +40,9 @@ int main() {
     dodaj(koka, Koka, 8, 8);
 
     for (int i = 0; i < 100000; i++) {
-        system("clear");
+
         swiat.rysujSwiat();
-//        sleep(1);
+        sleep(1);
         swiat.wykonajTure();
 
     }

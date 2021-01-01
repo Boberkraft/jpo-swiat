@@ -28,7 +28,9 @@ void Ekran::wstawZnak(std::string znak, Pozycja pozycja) {
 }
 
 void Ekran::wyswietl() {
-    wyswietlBuffer(wstawKomunikaty(wstawTure(wstawZnakiGracza(templatka))));
+    auto plansza = wstawKomunikaty(wstawTure(wstawZnakiGracza(templatka)));
+    system("clear");
+    wyswietlBuffer(plansza);
 }
 
 std::vector<std::vector<KolorowyZnak>> Ekran::wygenerujTemplatka() {
