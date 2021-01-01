@@ -27,6 +27,13 @@ void Zwierze::kolizja(Zwierze &wchodzacy) {
     if (znak == wchodzacy.znak) {
         swiat->rozmnorz(*this, wchodzacy);
     } else {
+        auto komunikat = std::vector<std::string>();
+        komunikat.push_back(wchodzacy.znak);
+        komunikat.emplace_back("\U0001F52A");
+        komunikat.push_back(this->znak);
+
+        Ekran::instancja()->wstawKomunikat(komunikat);
+
         swiat->zabij(*this);
         swiat->idz(wchodzacy, pozycja);
     }

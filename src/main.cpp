@@ -30,6 +30,8 @@ int main() {
 //    dodaj(zaba1, Zaba, 3, 9);
 //    dodaj(zaba2, Zaba, 3, 7);
 //    dodaj(koka, Koka, 8, 8);
+//    dodaj(koka1, Koka, 9, 4);
+//    dodaj(koka2, Koka, 10, 2);
 //    dodaj(mlecz, Mlecz, 10, 15);
 //    dodaj(trawa1, Trawa, 10, 17);
 //    dodaj(trawa2, Trawa, 10, 18);
@@ -40,10 +42,9 @@ int main() {
     for (int i = 0; i < 100000; i++) {
         system("clear");
         swiat.rysujSwiat();
-        sleep(1);
+//        sleep(1);
         swiat.wykonajTure();
 
     }
     return 0;
 }
-

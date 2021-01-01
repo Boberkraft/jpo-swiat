@@ -5,6 +5,10 @@
 #include "Swiat.h"
 #include "iostream"
 
+Swiat::Swiat() {
+    tura = 1;
+};
+
 void Swiat::wykonajTure() {
     for (auto &organizm : organizmy) {
 //        std::cout << "ruszam" << organizm << std::endl;
@@ -22,7 +26,15 @@ void Swiat::wykonajTure() {
             ),
             organizmy.end()
     );
+
+    tura += 1;
+    Ekran().instancja()->wstawTure(tura);
 }
+
+unsigned int Swiat::ktoraTura() {
+    return tura;
+}
+
 
 void Swiat::rysujSwiat() {
     for (auto organizm : organizmy) {
@@ -45,7 +57,6 @@ void Swiat::idz(Organizm &ruszajacySie, Pozycja pozycja) {
     }
 
     if (stojacy) {
-//        std::cout << "BITKA " << &ruszajacySie << std::endl;
         stojacy->kolizja(ruszajacySie);
     } else {
         ruszajacySie.pozycja = pozycja;
@@ -62,16 +73,22 @@ Organizm *Swiat::znajdz(Pozycja pozycja) {
     return nullptr;
 }
 
-unsigned int Swiat::korygatorWspolrzednej(int wspolrzedna) {
-
-}
-
 Zwierze *Swiat::rozmnorz(Zwierze &pasywny, Zwierze &inicjator) {
-    rozmnorz(reinterpret_cast<Organizm &>(pasywny), 2);
+    if (rozmnorz(reinterpret_cast<Organizm &>(pasywny), 2)) {
+        auto komunikat = std::vector<std::string>();
+        komunikat.push_back(pasywny.znak);
+        komunikat.emplace_back("\U0001f495");
+        Ekran::instancja()->wstawKomunikat(komunikat);
+    }
 }
 
 Roslina *Swiat::rozmnorz(Roslina &roslina) {
-    rozmnorz(reinterpret_cast<Organizm &>(roslina), 2);
+    if (rozmnorz(reinterpret_cast<Organizm &>(roslina), 2)) {
+        auto komunikat = std::vector<std::string>();
+        komunikat.push_back(roslina.znak);
+        komunikat.emplace_back("\U0001F4A6");
+        Ekran::instancja()->wstawKomunikat(komunikat);
+    }
 }
 
 Organizm *Swiat::rozmnorz(Organizm &organizm, unsigned int zasieg) {
@@ -86,6 +103,7 @@ Organizm *Swiat::rozmnorz(Organizm &organizm, unsigned int zasieg) {
     Organizm *dziecko = organizm.dziecko();
     dodajOrganizm(dziecko);
     idz(*dziecko, wolnaPozycja);
+    return dziecko;
 }
 
 bool Swiat::znajdzWolneMiejsceObok(unsigned int zasieg, Pozycja pozycja, Pozycja &wybranaPozycja) {
@@ -96,7 +114,7 @@ bool Swiat::znajdzWolneMiejsceObok(unsigned int zasieg, Pozycja pozycja, Pozycja
         wybranyRzad = -1;
         wybranaKolumna = -1;
 
-        int wylosowanyKierunek = rand() % ((zasieg*2 + 1) * (zasieg*2 + 1));
+        int wylosowanyKierunek = rand() % ((zasieg * 2 + 1) * (zasieg * 2 + 1));
         for (int i = 0; i < iloscProb; i++) {
             if (wylosowanyKierunek == *proby) {
                 continue;
@@ -104,8 +122,8 @@ bool Swiat::znajdzWolneMiejsceObok(unsigned int zasieg, Pozycja pozycja, Pozycja
         }
         proby[iloscProb] = wylosowanyKierunek;
 
-        int x =  (wylosowanyKierunek / ((zasieg + 1) * 2) - zasieg/2);
-        int y =  (wylosowanyKierunek % ((zasieg + 1) * 2) - zasieg/2);
+        int x = (wylosowanyKierunek / ((zasieg + 1) * 2) - zasieg / 2);
+        int y = (wylosowanyKierunek % ((zasieg + 1) * 2) - zasieg / 2);
         wybranaPozycja = Pozycja(pozycja.rzad() + x, pozycja.kolumna() + y);
 
         Organizm *zajety = znajdz(wybranaPozycja);
@@ -122,3 +140,4 @@ bool Swiat::znajdzWolneMiejsceObok(unsigned int zasieg, Pozycja pozycja, Pozycja
 void Swiat::zabij(Organizm &organizm) {
     organizm.zyje = false;
 }
+

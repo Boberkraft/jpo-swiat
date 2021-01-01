@@ -14,6 +14,7 @@
 
 class Swiat {
 private:
+    unsigned int tura;
     std::vector<Organizm *> organizmy;
 
     unsigned int korygatorWspolrzednej(int wspolrzedna);
@@ -21,7 +22,11 @@ private:
     Organizm *rozmnorz(Organizm &organizm, unsigned int zasieg);
 
 public:
+    Swiat();
+
     void wykonajTure();
+
+    unsigned int ktoraTura();
 
     void rysujSwiat();
 
