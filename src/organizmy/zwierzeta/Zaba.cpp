@@ -7,8 +7,8 @@
 
 Zaba::Zaba() {
     podwojnyRuch = false;
-    sila = 9;
-    inicjatywa = 5;
+    sila = 4;
+    inicjatywa = 2;
     znak = "\U0001F438";
 }
 

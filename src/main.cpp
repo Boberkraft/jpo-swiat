@@ -23,6 +23,9 @@ int main() {
     dodaj(wilk1, Wilk, 14, 1);
     dodaj(wilk2, Wilk, 13, 1);
     dodaj(wilk3, Wilk, 2, 1);
+    dodaj(wilk4, Wilk, 5, 1);
+    dodaj(wilk5, Wilk, 8, 1);
+    dodaj(wilk6, Wilk, 17, 1);
     dodaj(owca1, Owca, 3, 3);
     dodaj(owca2, Owca, 4, 16);
     dodaj(owca3, Owca, 6, 6);

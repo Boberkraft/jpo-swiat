@@ -17,6 +17,8 @@ void Swiat::wykonajTure() {
     for (int i = 0; i < size; i++) {
         auto organizm = organizmy[i];
         if (organizm->zyje) {
+//            std::cout << "ruszam" << organizm->znak << std::endl;
+
             organizm->akcja();
         }
     }
@@ -96,7 +98,7 @@ Organizm *Swiat::znajdz(Pozycja pozycja) {
 }
 
 Zwierze *Swiat::rozmnorz(Zwierze &pasywny, Zwierze &inicjator) {
-    if (rozmnorz(reinterpret_cast<Organizm &>(pasywny), 2)) {
+    if (rozmnorz(reinterpret_cast<Organizm &>(pasywny), 1)) {
         auto komunikat = std::vector<std::string>();
         komunikat.push_back(pasywny.znak);
         komunikat.emplace_back("\U0001f495");

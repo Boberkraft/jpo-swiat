@@ -34,6 +34,7 @@ public:
     void zarejestrujSwiat(Swiat *swiat);
 
     int jakaInicjatywa();
+    int jakaSila();
     unsigned int wiek();
 
     Pozycja pozycja;

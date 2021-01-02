@@ -29,4 +29,8 @@ unsigned int Organizm::wiek() {
     return swiat->ktoraTura() - urodziny;
 }
 
+int Organizm::jakaSila() {
+    return sila;
+}
+
 
