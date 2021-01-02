@@ -58,6 +58,8 @@ std::vector<std::vector<KolorowyZnak>> Ekran::wygenerujTemplatka() {
     asciiPlansza.emplace_back(" xxxxxxxxxxxxxxxxxxxx                                              \n");
     asciiPlansza.emplace_back(" xxxxxxxxxxxxxxxxxxxx                                              \n");
     asciiPlansza.emplace_back("                                                                   \n");
+    asciiPlansza.emplace_back(" \U0001F344 \u2190 koka     \U0001F331 \u2190 mlecz \U0001F33E \u2190 trawa\n");
+    asciiPlansza.emplace_back(" \U0001F9A5 \u2190 leniwiec \U0001F411 \u2190 owca  \U0001F415 \u2190 wilk  \U0001F438 \u2190 żaba \U0001F40D \u2190 żmija \n");
 
     std::vector<std::vector<KolorowyZnak>> kolorowaPlansza;
 

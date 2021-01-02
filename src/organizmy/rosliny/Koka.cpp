@@ -6,7 +6,7 @@
 #include "../Zwierze.h"
 
 Koka::Koka() {
-    znak = "\U0001F336 ";
+    znak = "\U0001F344";
 }
 
 Organizm *Koka::dziecko() {

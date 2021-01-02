@@ -5,7 +5,7 @@
 #include "Mlecz.h"
 
 Mlecz::Mlecz() {
-    znak = "\U0001F337";
+    znak = "\U0001F331";
 }
 
 Organizm *Mlecz::dziecko() {

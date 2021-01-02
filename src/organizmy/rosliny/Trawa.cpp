@@ -6,7 +6,7 @@
 
 
 Trawa::Trawa() {
-    znak = "\U0001F331";
+    znak = "\U0001F33E";
 }
 
 Organizm *Trawa::dziecko() {
