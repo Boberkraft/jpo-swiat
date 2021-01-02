@@ -23,3 +23,16 @@ void Zaba::akcja() {
         akcja();
     }
 }
+
+void Zaba::kolizja(Zwierze &wchodzacy) {
+    Pozycja wolnaPozycja;
+    bool znalezionoWolneMiejsce = swiat->znajdzWolneMiejsceObok(1,
+                                                         this->pozycja,
+                                                         wolnaPozycja);
+
+    if (wchodzacy.znak != znak && znalezionoWolneMiejsce && rand() % 2 == 0) {
+        swiat->idz(*this, wolnaPozycja);
+    } else {
+        Zwierze::kolizja(wchodzacy);
+    };
+}

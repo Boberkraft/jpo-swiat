@@ -13,6 +13,8 @@ public:
     Zaba();
     Organizm* dziecko();
     void akcja();
+
+    void kolizja(Zwierze &wchodzacy);
 };
 
 
