@@ -42,7 +42,7 @@ std::vector<std::vector<KolorowyZnak>> Ekran::wygenerujTemplatka() {
     asciiPlansza.emplace_back(" xxxxxxxxxxxxxxxxxxxx ╚══════════════════════════════════════════╝ \n");
     asciiPlansza.emplace_back(" xxxxxxxxxxxxxxxxxxxx  Tura:                                       \n");
     asciiPlansza.emplace_back(" xxxxxxxxxxxxxxxxxxxx                                              \n");
-    asciiPlansza.emplace_back(" xxxxxxxxxxxxxxxxxxxx                                              \n");
+    asciiPlansza.emplace_back(" xxxxxxxxxxxxxxxxxxxx  Komunikaty:                                 \n");
     asciiPlansza.emplace_back(" xxxxxxxxxxxxxxxxxxxx                                              \n");
     asciiPlansza.emplace_back(" xxxxxxxxxxxxxxxxxxxx                                              \n");
     asciiPlansza.emplace_back(" xxxxxxxxxxxxxxxxxxxx                                              \n");
@@ -71,7 +71,7 @@ std::vector<std::vector<KolorowyZnak>> Ekran::wygenerujTemplatka() {
 
     const unsigned int RZAD_MAPY = 1;
     const unsigned int KOLUMNA_MAPY = 1;
-    const std::string colors[] = {"28", "28", "28", "28", "28", "28"};
+    const std::string colors[] = {"236", "236", "236", "237", "237", "237"};
     for (int rzad = 0; rzad < 20; rzad++) {
         for (int kolumna = 0; kolumna < 20; kolumna++) {
             int v1 = rand() % 6;
@@ -111,7 +111,7 @@ std::vector<std::vector<KolorowyZnak>> Ekran::wstawTure(std::vector<std::vector<
 
 std::vector<std::vector<KolorowyZnak>> Ekran::wstawKomunikaty(std::vector<std::vector<KolorowyZnak>> kolorowaPlansza) {
 
-    const unsigned int RZAD_MAPY = 7;
+    const unsigned int RZAD_MAPY = 8;
     const unsigned int KOLUMNA_MAPY = 29;
 
     auto ile_w_poziomie = 0;
@@ -126,13 +126,18 @@ std::vector<std::vector<KolorowyZnak>> Ekran::wstawKomunikaty(std::vector<std::v
         for (int i = 0; i < komunikat.size(); i++) {
             auto literka = komunikat[i];
             kolorowaPlansza[RZAD_MAPY + ile_w_pionie][KOLUMNA_MAPY + ile_w_poziomie * 5 + i].ustawZawartosc(literka);
+            if (komunikat.size() == 3) {
+                kolorowaPlansza[RZAD_MAPY + ile_w_pionie][KOLUMNA_MAPY + ile_w_poziomie * 5 + i].ustawKolor("1");
+            } else {
+                kolorowaPlansza[RZAD_MAPY + ile_w_pionie][KOLUMNA_MAPY + ile_w_poziomie * 5 + i].ustawKolor("195");
+            }
         }
         for (int i =  komunikat.size(); i < 5; i++) {
             kolorowaPlansza[RZAD_MAPY + ile_w_pionie][KOLUMNA_MAPY + ile_w_poziomie * 5 + i].ustawZawartosc("  ");
         }
         ile_w_poziomie += 1;
 
-        if (ile_w_pionie > 5) {
+        if (ile_w_pionie > 10) {
             break; // lol
         }
     }
