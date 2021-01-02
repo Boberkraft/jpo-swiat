@@ -133,11 +133,7 @@ Organizm *Swiat::rozmnorz(Organizm &organizm, unsigned int zasieg) {
 bool Swiat::znajdzWolneMiejsceObok(unsigned int zasieg, Pozycja pozycja, Pozycja &wybranaPozycja) {
     int proby[100]{-2};
 
-    int wybranyRzad, wybranaKolumna;
     for (int iloscProb = 0; iloscProb < zasieg; iloscProb++) {
-        wybranyRzad = -1;
-        wybranaKolumna = -1;
-
         int wylosowanyKierunek = rand() % ((zasieg * 2 + 1) * (zasieg * 2 + 1));
         for (int i = 0; i < iloscProb; i++) {
             if (wylosowanyKierunek == *proby) {

@@ -40,6 +40,10 @@ int main() {
     dodaj(zaba2, Zaba, 3, 7);
     dodaj(zaba4, Zaba, 1, 7);
     dodaj(zaba5, Zaba, 5, 7);
+    dodaj(zaba6, Zaba, 10, 7);
+    dodaj(zaba7, Zaba, 6, 15);
+    dodaj(zaba8, Zaba, 13, 3);
+    dodaj(zaba9, Zaba, 16, 8);
     dodaj(koka, Koka, 8, 8);
     dodaj(koka1, Koka, 9, 4);
     dodaj(koka2, Koka, 10, 2);
@@ -47,13 +51,11 @@ int main() {
     dodaj(trawa1, Trawa, 10, 17);
     dodaj(trawa2, Trawa, 10, 18);
 
-//    dodaj(wilk1, Wilk, 8, 9);
-//    dodaj(koka, Koka, 8, 8);
 
     for (int i = 0; i < 100000; i++) {
 
         swiat.rysujSwiat();
-        sleep(2);
+        sleep(1);
         try {
             swiat.wykonajTure();
         } catch (const char* msg) {

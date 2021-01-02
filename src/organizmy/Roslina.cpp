@@ -26,7 +26,7 @@ void Roslina::kolizja(Organizm &wchodzacy) {
 
     auto komunikat = std::vector<std::string>();
     komunikat.push_back(wchodzacy.znak);
-    komunikat.emplace_back("\U0001F52A");
+    komunikat.emplace_back("\U0001F374");
     komunikat.push_back(this->znak);
     Ekran::instancja()->wstawKomunikat(komunikat);
     swiat->zabij(*this);

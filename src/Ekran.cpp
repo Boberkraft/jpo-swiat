@@ -125,6 +125,12 @@ std::vector<std::vector<KolorowyZnak>> Ekran::wstawKomunikaty(std::vector<std::v
             ile_w_pionie += 1;
         }
 
+
+        if (ile_w_pionie > 11) {
+            kolorowaPlansza[RZAD_MAPY + ile_w_pionie][KOLUMNA_MAPY].ustawZawartosc("i jeszcze trochę...");
+            break;
+        }
+
         for (int i = 0; i < komunikat.size(); i++) {
             auto literka = komunikat[i];
             kolorowaPlansza[RZAD_MAPY + ile_w_pionie][KOLUMNA_MAPY + ile_w_poziomie * 5 + i].ustawZawartosc(literka);
@@ -139,9 +145,6 @@ std::vector<std::vector<KolorowyZnak>> Ekran::wstawKomunikaty(std::vector<std::v
         }
         ile_w_poziomie += 1;
 
-        if (ile_w_pionie > 10) {
-            break; // lol
-        }
     }
 
     komunikaty.clear();

@@ -17,7 +17,7 @@ public:
 
     void kolizja(Organizm &wchodzacy);
 
-    void kolizja(Zwierze &wchodzacy);
+    virtual void kolizja(Zwierze &wchodzacy);
 
     void dajBuffaPodwojnegoRuchu();
 };

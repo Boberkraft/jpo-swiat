@@ -4,10 +4,11 @@
 
 #include "Zaba.h"
 #include "../../Swiat.h"
+#include "iostream"
 
 Zaba::Zaba() {
     podwojnyRuch = false;
-    sila = 4;
+    sila = 0;
     inicjatywa = 2;
     znak = "\U0001F438";
 }
@@ -26,11 +27,16 @@ void Zaba::akcja() {
 
 void Zaba::kolizja(Zwierze &wchodzacy) {
     Pozycja wolnaPozycja;
+    std::cout << "HEJ" << std::endl;
     bool znalezionoWolneMiejsce = swiat->znajdzWolneMiejsceObok(1,
                                                          this->pozycja,
                                                          wolnaPozycja);
 
-    if (wchodzacy.znak != znak && znalezionoWolneMiejsce && rand() % 2 == 0) {
+    if (wchodzacy.znak != znak && znalezionoWolneMiejsce) {
+        auto komunikat = std::vector<std::string>();
+        komunikat.push_back(znak);
+        komunikat.emplace_back("\U0001F4A8");
+        Ekran::instancja()->wstawKomunikat(komunikat);
         swiat->idz(*this, wolnaPozycja);
     } else {
         Zwierze::kolizja(wchodzacy);

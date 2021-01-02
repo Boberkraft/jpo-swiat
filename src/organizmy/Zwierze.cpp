@@ -28,18 +28,22 @@ void Zwierze::kolizja(Zwierze &wchodzacy) {
         swiat->rozmnorz(*this, wchodzacy);
     } else {
         auto komunikat = std::vector<std::string>();
-        komunikat.push_back(wchodzacy.znak);
+
 
 
         if (wchodzacy.jakaSila() >= this->jakaSila()) {
+            komunikat.push_back(wchodzacy.znak);
             komunikat.emplace_back("\U0001F52A");
+            komunikat.push_back(this->znak);
             swiat->zabij(*this);
             swiat->idz(wchodzacy, pozycja);
         } else {
-            komunikat.emplace_back("\U00002694 ");
+            komunikat.push_back(this->znak);
+            komunikat.emplace_back("\U0001F6E1 ");
+            komunikat.push_back(wchodzacy.znak);
             swiat->zabij(wchodzacy);
         }
-        komunikat.push_back(this->znak);
+
         Ekran::instancja()->wstawKomunikat(komunikat);
 
     }
