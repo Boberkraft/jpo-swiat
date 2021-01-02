@@ -10,6 +10,8 @@ Swiat::Swiat() {
 };
 
 void Swiat::wykonajTure() {
+    ustawKolejnoscWalk();
+
     auto size = organizmy.size();
     for (int i = 0; i < size; i++) {
         auto organizm = organizmy[i];
@@ -17,6 +19,27 @@ void Swiat::wykonajTure() {
             organizm->akcja();
         }
     }
+    usunMartweOrganizmy()
+
+    tura += 1;
+    Ekran().instancja()->wstawTure(tura);
+}
+
+
+void Swiat::ustawKolejnoscWalk() {
+
+    std::sort(organizmy.begin(),
+              organizmy.end(),
+              [](Organizm *a, Organizm *b) -> bool {
+                  if (a->jakaInicjatywa() == b->jakaInicjatywa()) {
+                      return a->wiek() > b->wiek();
+                  }
+                  return a->jakaInicjatywa() > b->jakaInicjatywa();
+              }
+    );
+}
+
+void Swiat::usunMartweOrganizmy() {
     organizmy.erase(
             std::remove_if(
                     organizmy.begin(),
@@ -27,19 +50,6 @@ void Swiat::wykonajTure() {
             ),
             organizmy.end()
     );
-
-    std::sort(organizmy.begin(),
-              organizmy.end(),
-              [](Organizm *a, Organizm *b) -> bool {
-                    if (a->jakaInicjatywa() == b->jakaInicjatywa()) {
-                        return a->wiek() > b->wiek();
-                    }
-                    return a->jakaInicjatywa() > b->jakaInicjatywa();
-    }
-        );
-
-    tura += 1;
-    Ekran().instancja()->wstawTure(tura);
 }
 
 unsigned int Swiat::ktoraTura() {

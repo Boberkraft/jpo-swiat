@@ -21,6 +21,8 @@ private:
 
     Organizm *rozmnorz(Organizm &organizm, unsigned int zasieg);
 
+    void ustawKolejnoscWalk();
+    void usunMartweOrganizmy();
 public:
     Swiat();
 
