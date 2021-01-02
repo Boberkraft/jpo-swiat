@@ -6,6 +6,7 @@
 #include "../../Swiat.h"
 
 Zmija::Zmija() {
+    podwojnyRuch = false;
     sila = 2;
     inicjatywa = 3;
     znak = "\U0001F40D";

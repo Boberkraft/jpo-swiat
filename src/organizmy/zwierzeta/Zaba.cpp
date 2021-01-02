@@ -6,6 +6,7 @@
 #include "../../Swiat.h"
 
 Zaba::Zaba() {
+    podwojnyRuch = false;
     sila = 9;
     inicjatywa = 5;
     znak = "\U0001F438";
@@ -16,6 +17,9 @@ Organizm *Zaba::dziecko() {
 }
 
 void Zaba::akcja() {
-
     swiat->idz(*this, *pozycja.obok(2));
+    if (podwojnyRuch) {
+        podwojnyRuch = false;
+        akcja();
+    }
 }

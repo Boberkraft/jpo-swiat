@@ -8,7 +8,7 @@
 #include "../Organizm.h"
 
 class Zwierze : public Organizm {
-private:
+protected:
     bool podwojnyRuch;
 public:
     Zwierze();

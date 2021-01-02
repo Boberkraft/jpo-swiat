@@ -7,6 +7,7 @@
 
 
 Leniwiec::Leniwiec() {
+    podwojnyRuch = false;
     spi = false;
     sila = 2;
     inicjatywa = 1;
