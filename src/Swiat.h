@@ -23,6 +23,7 @@ private:
 
     void ustawKolejnoscWalk();
     void usunMartweOrganizmy();
+    void weryfikujCzyWszystkoGit();
 public:
     Swiat();
 

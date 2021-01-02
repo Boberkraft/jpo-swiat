@@ -51,7 +51,12 @@ int main() {
 
         swiat.rysujSwiat();
         sleep(1);
-        swiat.wykonajTure();
+        try {
+            swiat.wykonajTure();
+        } catch (const char* msg) {
+            std::cout << msg << std::endl;
+            return 0;
+        }
 
     }
     return 0;

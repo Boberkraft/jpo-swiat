@@ -10,6 +10,7 @@ Swiat::Swiat() {
 };
 
 void Swiat::wykonajTure() {
+    weryfikujCzyWszystkoGit();
     ustawKolejnoscWalk();
 
     auto size = organizmy.size();
@@ -19,7 +20,7 @@ void Swiat::wykonajTure() {
             organizm->akcja();
         }
     }
-    usunMartweOrganizmy()
+    usunMartweOrganizmy();
 
     tura += 1;
     Ekran().instancja()->wstawTure(tura);
@@ -160,5 +161,20 @@ bool Swiat::znajdzWolneMiejsceObok(unsigned int zasieg, Pozycja pozycja, Pozycja
 
 void Swiat::zabij(Organizm &organizm) {
     organizm.zyje = false;
+}
+
+void Swiat::weryfikujCzyWszystkoGit() {
+    int ilosc_zyjacych = 0;
+
+    for(int i = 0; i < organizmy.size(); i++) {
+        auto organizm = organizmy[i];
+        if (organizm->zyje) {
+            ilosc_zyjacych +=1;
+        }
+    }
+
+    if (0 == ilosc_zyjacych || ilosc_zyjacych > 400) {
+        throw "Ilosc Zyjacych zwierzat sie nie zgadza!";
+    }
 }
 
