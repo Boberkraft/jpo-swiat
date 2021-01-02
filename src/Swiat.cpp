@@ -13,8 +13,6 @@ void Swiat::wykonajTure() {
     auto size = organizmy.size();
     for (int i = 0; i < size; i++) {
         auto organizm = organizmy[i];
-
-//        std::cout << "ruszam" << organizm << std::endl;
         if (organizm->zyje) {
             organizm->akcja();
         }
@@ -29,6 +27,16 @@ void Swiat::wykonajTure() {
             ),
             organizmy.end()
     );
+
+    std::sort(organizmy.begin(),
+              organizmy.end(),
+              [](Organizm *a, Organizm *b) -> bool {
+                    if (a->jakaInicjatywa() == b->jakaInicjatywa()) {
+                        return a->wiek() > b->wiek();
+                    }
+                    return a->jakaInicjatywa() > b->jakaInicjatywa();
+    }
+        );
 
     tura += 1;
     Ekran().instancja()->wstawTure(tura);

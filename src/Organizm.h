@@ -14,10 +14,11 @@ class Swiat;
 class Organizm {
 protected:
     Swiat *swiat;
-public:
-    bool zyje;
+    unsigned int urodziny;
     int sila;
     int inicjatywa;
+public:
+    bool zyje;
     std::string znak;
 
     Organizm();
@@ -31,6 +32,9 @@ public:
     virtual void rysowanie();
 
     void zarejestrujSwiat(Swiat *swiat);
+
+    int jakaInicjatywa();
+    unsigned int wiek();
 
     Pozycja pozycja;
 };
