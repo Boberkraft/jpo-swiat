@@ -53,7 +53,7 @@ int main() {
     for (int i = 0; i < 100000; i++) {
 
         swiat.rysujSwiat();
-        sleep(1);
+        sleep(2);
         try {
             swiat.wykonajTure();
         } catch (const char* msg) {
