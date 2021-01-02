@@ -12,6 +12,8 @@ public:
     Zmija();
 
     Organizm *dziecko();
+
+    void kolizja(Zwierze &wchodzacy);
 };
 
 

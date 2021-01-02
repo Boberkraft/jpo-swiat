@@ -3,6 +3,7 @@
 //
 
 #include "Zmija.h"
+#include "../../Swiat.h"
 
 Zmija::Zmija() {
     sila = 2;
@@ -12,4 +13,11 @@ Zmija::Zmija() {
 
 Organizm *Zmija::dziecko() {
     return new Zmija();
+}
+
+void Zmija::kolizja(Zwierze &wchodzacy) {
+    Zwierze::kolizja(wchodzacy);
+    if (!zyje) {
+        swiat->zabij(wchodzacy);
+    }
 }
